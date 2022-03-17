@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-card color="primary" (click)="displayTodos()">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-icon name="checkbox-outline"></ion-icon>
+            To Dos
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card color="primary" (click)="displaySubjects()">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-icon name="book-outline"></ion-icon>
+            Subjects
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-card color="primary" (click)="displayProfile()">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-icon name="person-outline"></ion-icon>
+            My Profile
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <!-- <ion-card color="primary">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-icon name="settings-outline"></ion-icon>
+            Settings
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card> -->
+    </ion-col>
+  </ion-row>
+</ion-content>

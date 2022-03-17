@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ subjDesc }}</ion-title>
+    <ion-buttons slot="end" *ngIf="locked" (click)="showLockExamMeaning()">
+      <ion-icon name="lock-closed-outline" *ngIf="locked"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf="unlocked" (click)="lockedExam()">
+      <ion-icon name="lock-open-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-segment (ionChange)="segmentChanged($event)" value="examQuestions">
+  <ion-segment-button value="examQuestions">
+    <ion-icon name="documents-outline" color="danger"></ion-icon>
+    <ion-label>Exam Questions</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="monitoring">
+    <ion-icon name="documents-outline" color="success"></ion-icon>
+    <ion-label>Monitoring</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<ion-content *ngIf="selectedSegment =='examQuestions'">
+  <ion-list>
+    
+    <ion-list-header>
+      <ion-text>
+        <h6><strong>Examination Name:</strong> {{ examName }}</h6>
+        <h6><strong>Examination Type:</strong> {{ examType }}</h6>
+        <h6><strong>Examination Status:</strong> {{ examStatus }}</h6>
+        <h6><strong>No. of Items:</strong> {{ totalItems }}</h6>
+      </ion-text>
+    </ion-list-header>
+
+    <ion-card>
+      <ion-card-content *ngIf="questionaire">
+        <strong>List of Questions:</strong>
+        <!--<ion-item-sliding *ngFor="let question of questions" (click)="displayQuestion(question)">-->
+        <ion-item-sliding *ngFor="let question of questions">
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-icon name="document-outline"></ion-icon>
+            </ion-avatar>
+            <ion-label>
+              <p>{{ question.question }}</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- DELETE QUESTION -->
+          <ion-item-options side="end" *ngIf="unlocked">
+            <ion-item-option (click)="deleteQuestion(question)">Delete</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="!questionaire">
+        <strong>List of Questions:</strong>
+        <ion-item>No Questions Yet</ion-item>
+      </ion-card-content>
+    </ion-card>
+    
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addQuestionForm()" *ngIf="unlocked">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-content *ngIf="selectedSegment == 'monitoring'">
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>Examinees:</ion-card-title>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <strong>Done:</strong>
+      <ion-list *ngFor="let result of examResults">
+        <ion-item-sliding>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-icon name="person-outline"></ion-icon>
+            </ion-avatar>
+            <ion-label>
+              <h3>{{ result.lname }}, {{ result.fname }} </h3>
+              <h4><strong>Score:</strong> {{ result.studScore }} / {{ result.totalItems }}</h4>
+              <h4><strong>Exam Result:</strong> {{ result.status }}</h4>
+            </ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <strong>NOT YET DONE</strong>
+      <ion-list *ngFor="let noresult of noExamResults">
+        <ion-item-sliding>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-icon name="person-outline"></ion-icon>
+            </ion-avatar>
+            <ion-label>
+              <h3>{{ noresult.lname }}, {{ noresult.fname }} </h3>
+            </ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

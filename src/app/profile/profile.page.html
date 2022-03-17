@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-button> Close</ion-button>
+    </ion-buttons>
+    <ion-title>My Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card color="primary">
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Name:</ion-label>
+        <ion-input [(ngModel)]="userName" disabled></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>User Level:</ion-label>
+        <ion-input [(ngModel)]="userlvl" disabled></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>School:</ion-label>
+        <ion-textarea [(ngModel)]="userSchool" disabled></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>Birthdate:</ion-label>
+        <ion-datetime [(ngModel)]="userbday" disabled></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select [(ngModel)]="userGender" disabled>
+          <ion-select-option value="Female">Female</ion-select-option>
+          <ion-select-option value="Male">Male</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Subjects</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="hasSubjects">
+  <ion-list *ngFor="let subject of subjects" >
+    <ion-item (click)="displaySubj(subject.subjDesc)">
+      <ion-avatar slot="start">
+        <ion-icon name="book-outline"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ subject.subjCode }}</h2>
+        <h3>{{ subject.subjDesc }}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addSubj()" *ngIf="fabButton">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-content *ngIf="!hasSubjects">
+  <ion-card>
+    <ion-card-content>
+      <h2><strong>No Subjects Yet!</strong></h2>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addSubj()" *ngIf="fabButton">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

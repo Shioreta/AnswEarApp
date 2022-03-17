@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Edit Question</ion-title>
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-button>Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- EDIT QUESTION -->
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <!--<ion-card-title><strong>{{ examName }}</strong></ion-card-title>-->
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label><strong>Subject:</strong></ion-label>
+        <ion-textarea [(ngModel)]="subjDesc" disabled></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label><strong>Question:</strong></ion-label>
+        <ion-textarea [(ngModel)]="question"></ion-textarea>
+        <!-- <div>{{ question }}</div> -->
+      </ion-item>
+
+      <ion-item *ngIf="multipleChoice">
+        <ion-label><strong>A:</strong></ion-label>
+        <ion-textarea [(ngModel)]="optionA"></ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="multipleChoice">
+        <ion-label><strong>B:</strong></ion-label>
+        <ion-textarea [(ngModel)]="optionB"></ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="multipleChoice">
+        <ion-label><strong>C:</strong></ion-label>
+        <ion-textarea [(ngModel)]="optionC"></ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="multipleChoice">
+        <ion-label><strong>D:</strong></ion-label>
+        <ion-textarea [(ngModel)]="optionD"></ion-textarea>
+      </ion-item>
+
+      <ion-item *ngIf="multipleChoice">
+        <ion-label><strong>Answer</strong></ion-label>
+        <ion-select [(ngModel)]="answer">
+          <ion-select-option value="a">a</ion-select-option>
+          <ion-select-option value="b">b</ion-select-option>
+          <ion-select-option value="c">c</ion-select-option>
+          <ion-select-option value="d">d</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngIf="identification">
+        <ion-label><strong>Answer</strong></ion-label>
+        <ion-textarea [(ngModel)]="answer"></ion-textarea>
+      </ion-item>
+      <ion-button expand="block" (click)="updateQuestion()">SAVE</ion-button>
+    </ion-card-content>
+  </ion-card> 
+</ion-content>

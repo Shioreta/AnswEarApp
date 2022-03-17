@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>List of Accounts</ion-title>
+    <!--
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-button>Close</ion-button>
+    </ion-buttons>
+    -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let user of users">
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-avatar>
+      <ion-label>{{ user.lname }}, {{ user.fname }} </ion-label>
+      <ion-label slot="end">{{ user.usertype }} </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

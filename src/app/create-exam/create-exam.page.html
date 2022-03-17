@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Create Exam</ion-title>
+    <ion-buttons (click)="closeModal()" slot="end">
+      <ion-button>Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-label position="fixed">Subject Name:</ion-label>
+      <ion-textarea disabled [(ngModel)]="subjectDesc"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Exam Name:</ion-label>
+      <ion-textarea [(ngModel)]="examName"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Exam Type</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="examType">
+        <ion-select-option value="Multiple Choice">Multiple Choice</ion-select-option>
+        <ion-select-option value="Identification">Identification</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Start Date</ion-label>
+      <ion-datetime [(ngModel)]="startDate" min="2021-09" max="2030-12"
+        [dayShortNames]="customDayShortNames"
+        displayFormat="DDD. MMM DD, YYYY"
+        monthShortNames="January, February, March, April, May, June, July, August, September, October, November, December"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>End Date</ion-label>
+      <ion-datetime [(ngModel)]="endDate" min="2021-09" max="2030-12"
+        [dayShortNames]="customDayShortNames"
+        displayFormat="DDD. MMM DD, YYYY"
+        monthShortNames="January, February, March, April, May, June, July, August, September, October, November, December"></ion-datetime>
+    </ion-item>
+    
+    <ion-button expand="block" (click)="createExam()">Save</ion-button>
+  </ion-card>
+</ion-content>

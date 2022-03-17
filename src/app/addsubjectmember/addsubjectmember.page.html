@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Add Member</ion-title>
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-button>Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="hasStudents">
+  <ion-item>
+    <ion-label>Subject:</ion-label>
+    <ion-textarea [(ngModel)]="subjectDesc"></ion-textarea>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Students</ion-label>
+    <ion-select placeholder="Select One" [(ngModel)]="studUsername">
+      <ion-select-option *ngFor="let student of students" value="{{student.username}}">{{student.lname}}, {{student.fname}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addsubjMember()">Save</ion-button>
+</ion-content>
+
+<ion-content *ngIf="!hasStudents">
+  <ion-card>
+    <ion-card-content>
+      <h2>All students has been added!</h2>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

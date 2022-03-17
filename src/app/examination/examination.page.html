@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Exam</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="readAgain()">
+        <ion-icon slot="start" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<swiper #swiper [allowTouchMove]="false" (slideChange)="onSlideChange()" (initializeSlide)="2">
+  <ng-template swiperSlide *ngFor="let question of questions">
+    <ion-card>
+      <ion-card-header>
+        <!--<ion-card-title>{{ examName }}</ion-card-title>-->
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Question:</ion-label>
+          <ion-textarea [(ngModel)]="question.question" readonly></ion-textarea>
+        </ion-item>
+        <ion-item *ngIf="multipleChoice">
+          <ion-label>A:</ion-label>
+          <ion-textarea [(ngModel)]="question.optionA" readonly></ion-textarea>
+        </ion-item>
+        <ion-item *ngIf="multipleChoice">
+          <ion-label>B:</ion-label>
+          <ion-textarea [(ngModel)]="question.optionB" readonly></ion-textarea>
+        </ion-item>
+        <ion-item *ngIf="multipleChoice">
+          <ion-label>C:</ion-label>
+          <ion-textarea [(ngModel)]="question.optionC" readonly></ion-textarea>
+        </ion-item>
+        <ion-item *ngIf="multipleChoice">
+          <ion-label>D:</ion-label>
+          <ion-textarea [(ngModel)]="question.optionD" readonly></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label>Answer</ion-label>
+          <ion-input [(ngModel)]="studAnswer"></ion-input>
+        </ion-item>
+        <ion-button expand="block" (click)="next(question)">Next
+          <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </ion-card> 
+  </ng-template> 
+  <ng-template swiperSlide>
+    <ion-card>
+      <ion-card-content>
+        <h2><strong>All Questions have been answered!</strong></h2>
+        <h3>Are you ready to view your exam results?</h3>
+        <ion-button expand="block" (click)="submitExam()">View Exam Results</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-template> 
+</swiper>
+
+</ion-content>
+
+<ion-footer>
+  
+  <ion-row>
+    <ion-col size="12">
+      <ion-button expand="full" size="large" (click)="listen()">
+        <ion-icon name="mic-outline"></ion-icon>       
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-footer>

@@ -1,0 +1,23 @@
+ion-content {
+    .app-logo{
+        text-align: center;
+    }
+    img {
+        width: 70%;
+    }
+    .app-title { 
+        text-align: center;
+        font-size: 36px;
+        font-weight: 900;
+    }
+    ion-card {
+        margin:0;
+        height: 450px;
+        padding-top: 20px;
+        border-top-right-radius: 35px;
+        border-top-left-radius: 35px;
+    }
+    .button-native {
+        border-radius: 50% !important;
+    }
+}

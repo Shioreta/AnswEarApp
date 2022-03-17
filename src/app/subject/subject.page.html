@@ -1,0 +1,168 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ subjDesc }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-segment (ionChange)="segmentChanged($event)" value="upcoming">
+  <ion-segment-button value="upcoming">
+    <ion-icon name="documents-outline" color="danger"></ion-icon>
+    <ion-label>Upcoming</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="completed">
+    <ion-icon name="documents-outline" color="success"></ion-icon>
+    <ion-label>Completed</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="members">
+    <ion-icon name="people-outline"></ion-icon>
+    <ion-label>Members</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<ion-content *ngIf="selectedSegment =='upcoming'">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>UPCOMING EXAMS</ion-card-title>
+    </ion-card-header>
+
+
+    <ion-card-content *ngIf="hasupcomingExam">
+      <ion-list *ngFor="let upcomingexam of upcomingExams">
+        <!-- if teacher -->
+        <ion-item (click)="displayExamQuestions(upcomingexam)" *ngIf="teacher">
+          <ion-avatar slot="start">
+            <ion-icon name="document-lock-outline" class="examIcon"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ upcomingexam.examName }}</h2>
+            <h3>{{ upcomingexam.startDate | date }} to {{ upcomingexam.endDate | date}}</h3>
+            <p>{{ upcomingexam.subjDesc }} </p>
+          </ion-label>
+        </ion-item>
+
+        <!-- if student -->
+        <ion-item (click)="displayStudentView(upcomingexam)" *ngIf="student">
+          <ion-avatar slot="start">
+            <ion-icon name="document-lock-outline" class="examIcon"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ upcomingexam.examName }}</h2>
+            <h3>{{ upcomingexam.startDate | date}} to {{ upcomingexam.endDate | date }}</h3>
+            <p>{{ upcomingexam.subjDesc }} </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+    <ion-card-content *ngIf="!hasupcomingExam">
+      <ion-label><h2>No Upcoming Exams!</h2></ion-label>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="createExam()" *ngIf="fabButton">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-content *ngIf="selectedSegment =='completed'">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card>
+    <!-- <ion-card-header>
+      <ion-card-title>COMPLETED EXAMS</ion-card-title>
+    </ion-card-header> -->
+    <ion-card-content *ngIf="hascompletedExam || hasTakenExams">
+      <!-- If teacher -->
+      <div *ngIf="teacher">
+        <ion-list *ngFor="let completedexam of completedExams">
+          <ion-item (click)="displayExamQuestions(completedexam)" *ngIf="teacher">
+            <ion-avatar slot="start">
+              <ion-icon name="document-lock-outline" class="examIcon"></ion-icon>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{ completedexam.examName }}</h2>
+              <h3>{{ completedexam.startDate | date }} to {{ completedexam.endDate | date }}</h3>
+              <p>{{ completedexam.subjDesc }} </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+      <!-- if student -->
+      <div *ngIf="student">
+        <ion-item>
+          <p><strong>MISSED:</strong></p>
+        </ion-item>
+        <ion-list *ngFor="let completedexam of completedExams">
+          <ion-item (click)="displayStudCompletedExamDeteils(completedexam)">
+            <ion-avatar slot="start">
+              <ion-icon name="document-lock-outline" class="examIcon"></ion-icon>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{ completedexam.examName }}</h2>
+              <h3>{{ completedexam.startDate | date }} to {{ completedexam.endDate | date }}</h3>
+              <p>{{ completedexam.subjDesc }} </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+  
+        <ion-item>
+          <h4><strong>TAKEN:</strong></h4>
+        </ion-item>
+        <ion-list *ngFor="let takenExam of takenExams">
+          <ion-item (click)="displayStudCompletedExamDeteils(takenExam)">
+            <ion-avatar slot="start">
+              <ion-icon name="document-lock-outline" class="examIcon"></ion-icon>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{ takenExam.examName }}</h2>
+              <h3>{{ takenExam.startDate | date }} to {{ takenExam.endDate | date }}</h3>
+              <p>{{ takenExam.subjDesc }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-card-content>
+
+    <ion-card-content *ngIf="!hascompletedExam && !hasTakenExams">
+      <ion-label><h2>No Completed Exams!</h2></ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-content *ngIf="selectedSegment =='members'">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>MEMBERS:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngFor="let member of subjMembers">
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-icon name="person-outline"></ion-icon>
+          </ion-avatar>
+          <ion-label>{{ member.lname }}, {{ member.fname }} </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addMember()" *ngIf="fabButton">
+    <ion-fab-button>
+      <ion-icon name="person-add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+</ion-content>

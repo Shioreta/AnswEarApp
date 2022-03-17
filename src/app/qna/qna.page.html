@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Create Questions</ion-title>
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-button>Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Subject:</ion-label>
+        <ion-textarea [(ngModel)]="subjDesc" disabled></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Question:</ion-label>
+        <ion-textarea [(ngModel)]="question" ></ion-textarea>
+      </ion-item>
+
+      <!-- If Multiple Choice -->
+      <ion-item *ngIf="multipleChoice">
+        <ion-label>A:</ion-label>
+        <ion-textarea [(ngModel)]="optionA"></ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="multipleChoice">
+        <ion-label>B:</ion-label>
+        <ion-textarea [(ngModel)]="optionB"></ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="multipleChoice">
+        <ion-label>C:</ion-label>
+        <ion-textarea [(ngModel)]="optionC"></ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="multipleChoice">
+        <ion-label>D:</ion-label>
+        <ion-textarea [(ngModel)]="optionD"></ion-textarea>
+      </ion-item>
+
+      <ion-item *ngIf="multipleChoice">
+        <ion-label>Answer</ion-label>
+        <ion-select [(ngModel)]="answer">
+          <ion-select-option value="a">a</ion-select-option>
+          <ion-select-option value="b">b</ion-select-option>
+          <ion-select-option value="c">c</ion-select-option>
+          <ion-select-option value="d">d</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- If Identification -->
+
+      <ion-item *ngIf="identification">
+        <ion-label>Answer</ion-label>
+        <ion-textarea [(ngModel)]='answer'></ion-textarea>
+      </ion-item>
+      <ion-button expand="block" (click)="saveQuestion()">SAVE</ion-button>
+    </ion-card-content>
+  </ion-card> 
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Add Subject</ion-title>
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-button>Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="hasNotMySubjs">
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Subjects:</ion-label>
+        <ion-select [(ngModel)]="newSubj">
+          <ion-select-option *ngFor="let subj of notMySubjs">{{ subj.subjDesc }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="full" (click)="addSubj()">Save</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="!hasNotMySubjs">
+    <ion-card-content>
+      <ion-label>
+        <h2><strong>No available subject to add on your account!</strong></h2>
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

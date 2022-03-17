@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Add an Account</ion-title>
+    <!-- 
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-button>Close</ion-button>
+    </ion-buttons>
+    -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-label position="fixed">Username:</ion-label>
+      <ion-textarea [(ngModel)]="userName"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Password:</ion-label>
+      <ion-textarea [(ngModel)]="password"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">First Name:</ion-label>
+      <ion-textarea [(ngModel)]="firstName"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Middle Name:</ion-label>
+      <ion-textarea [(ngModel)]="midName"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Last Name:</ion-label>
+      <ion-textarea [(ngModel)]="lastName"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>User Type</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="userType">
+        <ion-select-option value="teacher">Teacher</ion-select-option>
+        <ion-select-option value="student">Student</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="gender">
+        <ion-select-option value="Male">Male</ion-select-option>
+        <ion-select-option value="Female">Female</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Birthday</ion-label>
+      <ion-datetime [(ngModel)]="birthDate" min="1990-01" max="2030-12"
+        [dayShortNames]="customDayShortNames"
+        displayFormat="MMM DD, YYYY"
+        monthShortNames="January, February, March, April, May, June, July, August, September, October, November, December"></ion-datetime>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="fixed">School:</ion-label>
+      <ion-textarea [(ngModel)]="school"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" (click)="createAccount()">Save</ion-button>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Your Detailed Exam Results</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item><strong>Exam Name:  </strong> 
+        <ion-chip>
+          <ion-label><strong>{{examName}}</strong></ion-label>
+        </ion-chip>
+      </ion-item>
+      <ion-item>
+        <strong>Status: </strong>
+        <ion-chip color="success" *ngIf="examResults && hasTakenExam">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <ion-label>Passed</ion-label>
+        </ion-chip>
+        <ion-chip color="danger" *ngIf="!examResults || !hasTakenExam">
+          <ion-icon name="close-circle-outline"></ion-icon>
+          <ion-label>Failed</ion-label>
+        </ion-chip>
+      </ion-item>
+      <ion-item><strong>Your Score:  </strong> 
+        <ion-chip>
+          <ion-label>{{score}}</ion-label>
+        </ion-chip>
+      </ion-item>
+      <ion-item><strong>Total Items:  </strong> 
+        <ion-chip>
+          <ion-label>{{totalItems}}</ion-label>
+        </ion-chip>
+      </ion-item>
+
+      <!-- <ion-item *ngIf="hasTakenExam"><strong>Date Taken:  </strong> {{ dateAttempted | date }}</ion-item> -->
+
+      <ion-item *ngIf="hasTakenExam"><strong>Date Taken:  </strong>
+        <ion-chip color="danger" >
+          <ion-icon name="close-circle-outline"></ion-icon>
+          <ion-label>{{ dateAttempted | date }}</ion-label>
+        </ion-chip>
+      </ion-item>
+      <ion-item *ngIf="!hasTakenExam"><strong>Date Taken:  </strong>
+        <ion-chip color="danger" >
+          <ion-icon name="close-circle-outline"></ion-icon>
+          <ion-label>You missed this exam!</ion-label>
+        </ion-chip>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <!-- <ion-list>
+    <ion-item color="danger">
+      <ion-avatar slot="start">
+        <ion-icon name="document-lock-outline" class="examIcon"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h2>Question Here </h2>
+        <h3>Right Answer: </h3>
+        <p>Your Answer:  </p>
+      </ion-label>
+    </ion-item>
+  </ion-list> -->
+</ion-content>

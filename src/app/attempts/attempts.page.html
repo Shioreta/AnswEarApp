@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Exam Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      
+      <ion-item>
+        <ion-avatar>
+          <ion-icon name="bulb-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h5>Examination Name:</h5>
+          <h4>{{examName}}</h4>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-avatar>
+          <ion-icon name="bulb-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h5>Examination Type:</h5>
+          <h4>{{examType}}</h4>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-avatar>
+          <ion-icon name="bulb-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h5>No of Items:</h5>
+          <h4>{{items}}</h4>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-avatar>
+          <ion-icon name="bulb-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h5>End Date:</h5>
+          <h4>{{endDate|date}}</h4>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" (click)="startExamNow()">START EXAM NOW</ion-button>
+</ion-content>

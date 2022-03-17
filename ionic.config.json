@@ -1,0 +1,7 @@
+{
+  "name": "answEar",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
