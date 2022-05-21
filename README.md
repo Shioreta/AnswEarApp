@@ -7,7 +7,8 @@ Android Examination Application:
 Contains the developed android examination app
 utilizing Text-to-Speech API, MySQL Database, and Python GRU.
 The Android application handles the exam creation for multiple choice type of question and for identification type of question.
-The android application also handles the examination taking and scoring. Both are done using TTS and STT
+The android application also handles the examination taking and scoring. Both are done using TTS and STT.
+
 The android application is in the Master branch.
 https://github.com/Shioreta/AnswEarApp/tree/master
 _______________________________________________________________________________
