@@ -10,7 +10,7 @@ The Android application handles the exam creation for multiple choice type of qu
 The android application also handles the examination taking and scoring. Both are done using TTS and STT.
 
 The link for the android application repository:
-https://github.com/Shioreta/Shioreta-AnswEarApp-AndroidApp
+https://github.com/Shioreta/AnswEarApp-AndroidApp
 _______________________________________________________________________________
 
 
