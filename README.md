@@ -2,6 +2,10 @@
 An android mobile application developed using TypeScript. It is an examination tool intended to aid the visually impaired students in a certain school in the Philippines by implementing speech recognition and speech synthesis.
 _______________________________________________________________________________
 
+This repository contains the codes for the GRU model, the PHP files, and the database.
+
+_______________________________________________________________________________
+
 Android Examination Application:
 
 Contains the developed android examination app
